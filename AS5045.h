@@ -68,7 +68,7 @@
 class AS5045
 {
  public:
-  AS5045 (byte pinCS, byte pinCLK, byte pinDO, byte pinPROG = 0xFF) ;
+  AS5045 (byte pinCS, byte pinCLK, byte pinDO, byte pinPROG = 0xFF, unsigned int clockDelay = 0) ;
 
   boolean begin () ;
   boolean begin (int mag_offset) ;
@@ -88,11 +88,13 @@ class AS5045
   byte _pinCS ;
   byte _pinDO ;
   byte _pinPROG ;
+  unsigned int _clockDelay;
 
   byte _status ;
   byte _parity ;
 
   byte even_parity (byte val) ;
+  void clock_cycle (void);
   
   int _mag_offset;
   
